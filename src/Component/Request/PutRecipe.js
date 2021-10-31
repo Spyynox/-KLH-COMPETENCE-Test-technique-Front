@@ -7,9 +7,9 @@ class PutRecipe extends Component {
 
         this.state = {
             data: [],
-            title: this.props.title,
-            subtitle: this.props.subtitle,
-            list: this.props.list
+            title: '',
+            subtitle: '',
+            list: ''
         }
     }
 
@@ -30,13 +30,14 @@ class PutRecipe extends Component {
         })
     }
 
-    handleSubmit = (e) => {
-        // e.preventDefault()
+    handleSubmit = () => {
         axios.put('https://127.0.0.1:8000/api/recipes/' + this.props.id_Recipe, this.state)
             .then(response => {
                 console.log(response)
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                console.log(error)
+            })
     }
 
     render() {
@@ -52,16 +53,16 @@ class PutRecipe extends Component {
                                     <label>Titre</label>
                                     <input type="text"
                                     name="title" 
-                                    className='form-control' 
-                                    defaultValue={data.title}
+                                    className='form-control'
                                     onChange={this.handleChange}
+                                    placeholder={data.title}
                                     required="required" />
                                 </div>
                                 <div className="col">
                                     <label>Sous-titre</label>
                                     <input type="text" name="subtitle" 
                                         className='form-control' 
-                                        defaultValue={data.subtitle} 
+                                        placeholder={data.subtitle}
                                         onChange={this.handleChange} />
                                 </div>
                             </div>
@@ -69,7 +70,7 @@ class PutRecipe extends Component {
                                 <label className='mt-2'>Liste</label>
                                 <textarea className='form-control mt-2'
                                     name="list" 
-                                    defaultValue={data.list} 
+                                    placeholder={data.list}
                                     onChange={this.handleChange}
                                     required="required" />
                             </div>

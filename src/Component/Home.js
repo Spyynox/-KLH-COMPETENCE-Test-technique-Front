@@ -61,7 +61,6 @@ class Home extends Component {
                                     <button onClick={() => this.setState({ openPut: recipe.id })} type="button" className="btn btn-warning" id={"recipe-" + recipe.id} href="#">
                                         Modifier
                                     </button>
-                                    {/* <button type="button" className="btn btn-danger ml-2" href="#">Supprimer</button> */}
                                     <DeleteRecipe id_Delete={recipe.id} />
                                 </div>
                             </div>
